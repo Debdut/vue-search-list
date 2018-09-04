@@ -1,28 +1,43 @@
-<template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+<template lang="pug">
+  #app
+    search-list(:data="words" :algorithm="'block-anywhere'" @update-selected="word = $event")
+    search-list(:data="words" :algorithm="'block-anywhere'" @update-selected="word = $event")
+    h1 {{ word }}
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import SearchList from './components/SearchList'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    SearchList
+  },
+  data () {
+    return {
+      word: 'app',
+      words: [
+        'app',
+        'apple',
+        'appy',
+        'apple juice',
+        'man',
+        'ma',
+        'mango',
+        'many'
+      ]
+    }
   }
 }
 </script>
 
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="sass">
+#app
+  font-family: 'Avenir', Helvetica, Arial, sans-serif
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+  color: #2c3e50
+  margin-top: 60px
+  .search-list
+    width: 200px
 </style>
